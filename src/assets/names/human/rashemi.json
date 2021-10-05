@@ -1,0 +1,30 @@
+{
+    "male": [
+        "Borivik", 
+        "Faurgar", 
+        "Jandar", 
+        "Kanithar", 
+        "Madislak", 
+        "Ralmevik", 
+        "Shaumar", 
+        "Vladislak"
+    ],
+    "female": [
+        "Fyevarra", 
+        "Hulmarra", 
+        "Immith", 
+        "Imzel", 
+        "Navarra", 
+        "Shevarra", 
+        "Tammith", 
+        "Yuldra"
+    ],
+    "surname": [
+        "Chergoba", 
+        "Dyernina", 
+        "Iltazyara", 
+        "Murnyethara", 
+        "Stayanoga", 
+        "Ulmokina"
+    ]
+}

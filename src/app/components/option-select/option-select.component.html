@@ -1,0 +1,37 @@
+<div>
+
+    <!--FORM FOR RACE SELECTION-->
+    <mat-form-field appearance="fill">
+        <mat-label>Race:</mat-label>
+        <mat-select [formControl]="raceControl" name="race">
+            <mat-option *ngFor="let race of raceOptions" [value]=race>
+                {{race}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!--FORM FOR SEX SELECTION-->
+    <mat-form-field appearance="fill">
+        <mat-label>Sex:</mat-label>
+        <mat-select [formControl]="sexControl" name="sex">
+            <mat-option *ngFor="let sex of sexOptions" [value]=sex>
+                {{sex}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!--FORM FOR AGE RANGE SELECTION-->
+    <mat-form-field appearance="fill">
+        <mat-label>Age Group:</mat-label>
+        <mat-select [formControl]="ageControl" name="age">
+            <mat-option *ngFor="let age of ageOptions" [value]=age>
+                {{age}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="generateNewNpc()">
+        Generate
+    </button>
+
+</div>

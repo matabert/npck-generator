@@ -1,0 +1,47 @@
+<div>
+    <mat-card>
+        <!-- Header contains name, race and alignment -->
+        <mat-card-header>
+            <mat-card-title>
+                {{displayedNpc.name}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                <i>{{displayedNpc.race.name}}, {{displayedNpc.alignment}}</i>
+            </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content 
+            fxLayout="column" 
+            fxLayoutAlign="space-around stretch"
+            fxLayoutGap="16px">
+            <!-- Description -->
+            <table>
+                <tr>
+                    <th colspan="100%">Description:</th>
+                </tr>
+                <tr>
+                    <td style="width:25%">Sex: {{displayedNpc.sex}}</td>
+                    <td style="width:25%">Age: {{displayedNpc.age}} ({{displayedNpc.ageGroup}})</td>
+                    <td style="width:25%">Height: {{this.readableHeight(displayedNpc.height)}}</td>
+                    <td style="width:25%">Weight: {{readableWeight(displayedNpc.weight)}}</td>
+                </tr>
+            </table>
+            <!-- Personality -->
+            <table>
+                <tr>
+                    <th colspan="100%">Personality:</th>
+                </tr>
+                <tr>
+                    <td *ngFor="let trait of displayedNpc.traits" style="width:33%">
+                        {{trait.name}}
+                    </td>
+                </tr>
+                <tr>
+                    <td *ngFor="let trait of displayedNpc.traits" style="width:33%">
+                        {{trait.description}}
+                    </td>
+                </tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>

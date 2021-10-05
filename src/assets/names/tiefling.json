@@ -1,0 +1,52 @@
+{
+    "male": [
+        "Akmenos", 
+        "Amnon", 
+        "Harahas", 
+        "Ekernon", 
+        "Tados", 
+        "Kairon", 
+        "Leucis", 
+        "Melech", 
+        "Morthos", 
+        "Pelaios", 
+        "Skamos", 
+        "Therai"
+    ],
+    "female": [
+        "Akra", 
+        "Anakis", 
+        "Bryseis", 
+        "Criella", 
+        "Ea", 
+        "Kallista", 
+        "Lerissa", 
+        "Makaria", 
+        "Nemeia", 
+        "Phelaia", 
+        "Rieta"
+    ],
+    "unisex": [
+        "Art", 
+        "Carrion", 
+        "Chant", 
+        "Creed", 
+        "Despair", 
+        "Fear", 
+        "Glory", 
+        "Hope", 
+        "Ideal", 
+        "Music", 
+        "Nowhere", 
+        "Poetry", 
+        "Quest", 
+        "Random", 
+        "Reverence", 
+        "Sorrow", 
+        "Torment", 
+        "Weary"
+    ],
+    "surname": [
+        
+    ]
+}

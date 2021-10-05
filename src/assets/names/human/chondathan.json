@@ -1,0 +1,33 @@
+{
+    "male": [
+        "Darvin", 
+        "Dorn", 
+        "Evendur", 
+        "Gorstag", 
+        "Grim", 
+        "Helm", 
+        "Malark", 
+        "Morn", 
+        "Randal", 
+        "Stedd"
+    ],
+    "female": [
+        "Arveene", 
+        "Esvele", 
+        "Chessail", 
+        "Kerri", 
+        "Lureene", 
+        "Miri", 
+        "Rowan", 
+        "Shandri", 
+        "Tessele"
+    ],
+    "surname": [
+        "Amblecrown", 
+        "Buckman", 
+        "Dundragon", 
+        "Evenwood", 
+        "Greycastle", 
+        "Tallstag"
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "Race": {
+        "Dragonborn": null,
+        "Dwarf (Hill)": null,
+        "Dwarf (Mountain)": null,
+        "Elf (Drow)": null,
+        "Elf (High)": null,
+        "Elf (Wood)": null,
+        "Gnome (Forest)": null,
+        "Gnome (Rock)": null,
+        "Half-Elf": null,
+        "Half-Orc": null,
+        "Halfling (Lightfoot)": null,
+        "Halfling (Stout)": null,
+        "Human": null,
+        "Tiefling": null
+    },
+    "Sex": {
+        "Male": null,
+        "Female": null
+    },
+    "Age": {
+        "Child": null,
+        "Adolescent": null,
+        "Adult": null,
+        "Middle-age": null,
+        "Elderly": null
+    }
+}

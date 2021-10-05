@@ -1,0 +1,35 @@
+{
+    "male": [
+        "Bor", 
+        "Fodel", 
+        "Glar", 
+        "Grigor", 
+        "Igan", 
+        "Ivor", 
+        "Kosef", 
+        "Mival", 
+        "Orel", 
+        "Pavel", 
+        "Sergor"
+    ],
+    "female": [
+        "Alethra", 
+        "Kara", 
+        "Katernin", 
+        "Mara", 
+        "Natali", 
+        "Olma", 
+        "Tana", 
+        "Zora"
+    ],
+    "surname": [
+        "Bersk", 
+        "Chernin", 
+        "Dotsk", 
+        "Kulenov", 
+        "Marsk", 
+        "Nemetsk", 
+        "Shemov", 
+        "Starag"
+    ]
+}

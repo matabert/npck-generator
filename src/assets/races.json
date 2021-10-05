@@ -1,0 +1,154 @@
+[
+    {
+        "name": "Human",
+        "ageAdolescent": 10,
+        "ageAdulthood": 18,
+        "ageLifespan": 95,
+        "baseHeight": 56,
+        "baseWeight": 110,
+        "heightModifier": [2, 10],
+        "weightModifier": [2, 4],
+        "predisposedLaw": 0,
+        "predisposedMoral": 0
+    },
+    {
+        "name": "Dragonborn",
+        "ageAdolescent": 3,
+        "ageAdulthood": 15,
+        "ageLifespan": 80,
+        "baseHeight": 66,
+        "baseWeight": 175,
+        "heightModifier": [2, 8],
+        "weightModifier": [2, 6],
+        "predisposedLaw": 0,
+        "predisposedMoral": 0,
+        "subRaces": [
+            { "subName": "Black" },
+            { "subName": "Blue" },
+            { "subName": "Brass" },
+            { "subName": "Bronze" },
+            { "subName": "Copper" },
+            { "subName": "Gold" },
+            { "subName": "Green" },
+            { "subName": "Red" },
+            { "subName": "Silver" },
+            { "subName": "White" }
+        ]
+    },
+    {
+        "name": "Dwarf",
+        "ageAdolescent": 10,
+        "ageAdulthood": 50,
+        "ageLifespan": 350,
+        "baseHeight": 44,
+        "baseWeight": 115,
+        "heightModifier": [2, 4],
+        "weightModifier": [2, 6],
+        "predisposedLaw": 1,
+        "predisposedMoral": 0,
+        "subRaces": [
+            { "subName": "Hill" },
+            {
+                "subName": "Mountain",
+                "subBaseHeight": 48,
+                "subBaseWeight": 130
+            }
+        ]
+    },
+    {
+        "name": "Elf",
+        "ageAdolescent": 10,
+        "ageAdulthood": 100,
+        "ageLifespan": 750,
+        "baseHeight": 54,
+        "baseWeight": 90,
+        "heightModifier": [2, 10],
+        "weightModifier": [1, 4],
+        "predisposedLaw": -1,
+        "predisposedMoral": 1,
+        "subRaces": [
+            { 
+                "subName": "High"
+            },
+            {
+                "subName": "Wood",
+                "subBaseWeight": 100
+            },
+            {
+                "subName": "Drow",
+                "subBaseHeight": 53,
+                "subHeightModifier": [2, 6],
+                "subWeightModifier": [1, 6],
+                "subPredisposedMoral": -1
+            }
+        ]
+    },
+    {
+        "name": "Gnome",
+        "ageAdolescent": 10,
+        "ageAdulthood": 40,
+        "ageLifespan": 500,
+        "baseHeight": 35,
+        "baseWeight": 35,
+        "heightModifier": [2, 4],
+        "weightModifier": [1, 1],
+        "predisposedLaw": 0,
+        "predisposedMoral": 1,
+        "subRaces": [
+            { "subName": "Forest" },
+            { "subName": "Rock" }
+        ]
+    },
+    {
+        "name": "Half-Elf",
+        "ageAdolescent": 10,
+        "ageAdulthood": 20,
+        "ageLifespan": 180,
+        "baseHeight": 57,
+        "baseWeight": 110,
+        "heightModifier": [2, 8],
+        "weightModifier": [2, 4],
+        "predisposedLaw": -1,
+        "predisposedMoral": 0 
+    },
+    {
+        "name": "Half-Orc",
+        "ageAdolescent": 8,
+        "ageAdulthood": 14,
+        "ageLifespan": 75,
+        "baseHeight": 58,
+        "baseWeight": 140,
+        "heightModifier": [2, 10],
+        "weightModifier": [2, 6],
+        "predisposedLaw": -1,
+        "predisposedMoral": 0 
+    },
+    {
+        "name": "Halfling",
+        "ageAdolescent": 12,
+        "ageAdulthood": 20,
+        "ageLifespan": 250,
+        "baseHeight": 31,
+        "baseWeight": 35,
+        "heightModifier": [2, 4],
+        "weightModifier": [1, 1],
+        "predisposedLaw": 1,
+        "predisposedMoral": 1,
+        "subRaces": [
+            { "subName": "Lightfoot" },
+            { "subName": "Stout" }
+        ]
+    },
+    {
+        "name": "Tiefling",
+        "ageAdolescent": 10,
+        "ageAdulthood": 57,
+        "ageLifespan": 150,
+        "baseHeight": 57,
+        "baseWeight": 110,
+        "heightModifier": [2, 8],
+        "weightModifier": [2, 4],
+        "predisposedLaw": -1,
+        "predisposedMoral": 0 
+    }
+]
