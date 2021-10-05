@@ -1,0 +1,30 @@
+{
+    "male": [
+        "Aseir", 
+        "Bardeid", 
+        "Haseid", 
+        "Khemed", 
+        "Mehmen", 
+        "Sudeiman", 
+        "Zasheir"
+    ],
+    "female": [
+        "Atala", 
+        "Ceidil", 
+        "Hama", 
+        "Jasmal", 
+        "Meilil", 
+        "Seipora", 
+        "Yasheira", 
+        "Zasheida"
+    ],
+    "surname": [
+        "Basha", 
+        "Dumein", 
+        "Jassan", 
+        "Khalid", 
+        "Mostana", 
+        "Pashar", 
+        "Rein"
+    ]
+}

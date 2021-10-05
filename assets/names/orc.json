@@ -1,0 +1,30 @@
+{
+    "male": [
+        "Dench", 
+        "Feng", 
+        "Gell", 
+        "Henk", 
+        "Holg", 
+        "Imsh", 
+        "Keth", 
+        "Krusk", 
+        "Mhurren", 
+        "Ront", 
+        "Shump", 
+        "Thokk"
+    ],
+    "female": [
+        "Baggi", 
+        "Emen", 
+        "Engong", 
+        "Kansif", 
+        "Myev", 
+        "Neega", 
+        "Ovak", 
+        "Ownka", 
+        "Shautha", 
+        "Vola", 
+        "Volen", 
+        "Yevelda"
+    ]
+}

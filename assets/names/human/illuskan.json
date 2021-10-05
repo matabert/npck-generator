@@ -1,0 +1,33 @@
+{
+    "male": [
+        "Ander", 
+        "Blath", 
+        "Bran", 
+        "Frath", 
+        "Geth", 
+        "Lander", 
+        "Luth", 
+        "Malcer", 
+        "Stor", 
+        "Taman", 
+        "Urth"
+    ],
+    "female": [
+        "Amafrey", 
+        "Betha", 
+        "Cefrey", 
+        "Kethra", 
+        "Mara", 
+        "Olga", 
+        "Silifrey", 
+        "Westra"
+    ],
+    "surname": [
+        "Brightwood", 
+        "Helder", 
+        "Hornraven", 
+        "Lackman", 
+        "Stormwind", 
+        "Windrivver"
+    ]
+}

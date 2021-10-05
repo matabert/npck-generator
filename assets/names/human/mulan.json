@@ -1,0 +1,33 @@
+{
+    "male": [
+        "Aoth", 
+        "Bareris", 
+        "Ehput-Ki", 
+        "Kethoth", 
+        "Mumed", 
+        "Ramas", 
+        "So-Kehur", 
+        "Thazar-De", 
+        "Urhur"
+    ],
+    "female": [
+        "Arizima", 
+        "Chathi", 
+        "Nephis", 
+        "Nulara", 
+        "Murithi", 
+        "Sefris", 
+        "Thola", 
+        "Umara", 
+        "Zolis"
+    ],
+    "surname": [
+        "Ankhalab", 
+        "Anskuld", 
+        "Fezim", 
+        "Hahpet", 
+        "Nathandem", 
+        "Sepret", 
+        "Uuthrakt"
+    ]
+}
