@@ -34,7 +34,7 @@ import turami_names from '../assets/names/human/turami.json';
 })
 export class AppComponent {
   
-  title = 'NPC(K) Generator';
+  title = 'npck-generator';
   numNpcTraits = 3;
 
   activeNpc!: NonPlayerCharacter;
