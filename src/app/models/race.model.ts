@@ -1,4 +1,5 @@
 export interface Race {
+    id: string;
     name: string;
     ageAdolescent: number;
     ageAdulthood: number;
@@ -9,11 +10,11 @@ export interface Race {
     weightModifier: number[];
     predisposedLaw: number;
     predisposedMoral: number;
-    subRaces?: SubRace[];
-
+    subRaces: SubRace[];
 }
 
 export interface SubRace {
+    id: string;
     subName: string;
     subBaseHeight?: number;
     subBaseWeight?: number;

@@ -2,19 +2,31 @@
 
 <div class="container"
   fxLayout="row" 
-  fxLayoutAlign="space-around stretch">
+  fxLayoutAlign="space-around stretch"
+  fxLayoutGap="24px">
+  
   <div 
     fxFlexOrder="1"
-    fxFlex="15"
+    fxFlex="20"
     fxFlexAlign="stretch">
     <app-option-select (buildNewNpc)="buildNpc($event)"></app-option-select>
   </div>
+
   <div
     fxFlexOrder="2" 
     fxFlex="60"
     fxFlexAlign="stretch">
-    <app-npc-display [displayedNpc]="activeNpc"></app-npc-display>
+    <app-npc-display 
+      [displayedNpc]="activeNpc" 
+      [enableEditing]="npcEditingEnabled" 
+      (flipChangesFlag)="enableDisableEditing()" 
+      (saveChanges)="saveChanges($event)">
+    </app-npc-display>
   </div>
+
+  <!-- Empty third div to keep npc-display centered -->
+  <div fxFlexOrder="3" fxFlex></div>
+  
 </div>
 
 </body>

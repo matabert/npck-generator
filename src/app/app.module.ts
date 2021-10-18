@@ -13,11 +13,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NpcService } from './services/npc.service';
 import { NpcDisplayComponent } from './components/npc-display/npc-display.component';
 import { OptionSelectComponent } from './components/option-select/option-select.component';
 
@@ -45,6 +45,7 @@ import { OptionSelectComponent } from './components/option-select/option-select.
     MatButtonModule,
     FlexLayoutModule,
     MatCardModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

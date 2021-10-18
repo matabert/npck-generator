@@ -4,8 +4,8 @@
     <mat-form-field appearance="fill">
         <mat-label>Race:</mat-label>
         <mat-select [formControl]="raceControl" name="race">
-            <mat-option *ngFor="let race of raceOptions" [value]=race>
-                {{race}}
+            <mat-option *ngFor="let race of raceOptions" [value]="race.id">
+                    {{race.name}}
             </mat-option>
         </mat-select>
     </mat-form-field>
@@ -30,7 +30,7 @@
         </mat-select>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="generateNewNpc()">
+    <button mat-raised-button color="primary" (click)="buildNewNpcEmitter()">
         Generate
     </button>
 

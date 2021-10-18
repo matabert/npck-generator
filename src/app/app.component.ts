@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Race, SubRace } from './models/race.model';
 import { Trait } from './models/trait.model';
 import { NonPlayerCharacter } from './models/npc.model';
+import { Globals } from './common/globals';
 
 import trait_list from '../assets/traits/personality.json';
 import race_list from '../assets/races.json';
@@ -37,10 +38,12 @@ export class AppComponent {
   title = 'npck-generator';
   numNpcTraits = 3;
 
+  npcEditingEnabled: boolean;
   activeNpc!: NonPlayerCharacter;
   
   constructor(private httpClient: HttpClient) {
     this.buildNpc();
+    this.npcEditingEnabled = false;
   }
 
   selectNpcTraits(): Trait[] {
@@ -76,33 +79,27 @@ export class AppComponent {
     return traits;
   }
 
-  selectNpcRace(preSelectedRace?: string): Race {
-    const enabledRaces = [...race_list];
-    let x, chosenRace;
-    if(preSelectedRace && preSelectedRace != 'Random') {
-      chosenRace = enabledRaces.filter(race => { return race.name === preSelectedRace }).pop();
+  selectNpcRace(optionSelectRaceId?: string): Race {
+    const allRaces = Globals.fullRacesArray;
+    //If a race has been pre-selected, return that race
+    if(optionSelectRaceId) {
+      return allRaces.find(race => race.id === optionSelectRaceId)!;
+    }
+    //If a race has not been pre-selected, select one randomly
+    let x: number;
+    let chosenRaceId: string;
+    //Make an initial pick amongst races, not subraces
+    x = Math.floor(Math.random() * Globals.races.length);
+    //If the chosen race has subraces, choose a subrace
+    if(Globals.races[x].subRaces.length > 0){
+      let y: number;
+      y = Math.floor(Math.random() * Globals.races[x].subRaces.length);
+      chosenRaceId = Globals.races[x].subRaces[y].id;
     } else {
-      x = Math.floor(Math.random() * enabledRaces.length);
-      chosenRace = enabledRaces.splice(x, 1).pop();
+      chosenRaceId = chosenRaceId = Globals.races[x].id;
     }
-    let npcsRace = JSON.parse(JSON.stringify(chosenRace));
-    /**If chosenRace has subraces, randomly select a subrace
-    *  and overwrite any base racial values with the subrace's
-    * values, should they exist.
-    */
-    if(npcsRace.subRaces) {
-      x = Math.floor(Math.random() * npcsRace.subRaces.length);
-      let npcsSubRace = npcsRace.subRaces[x];
-      npcsRace.name = `${chosenRace.name} (${chosenRace.subRaces[x].subName})`;
-      if(npcsSubRace.subBaseHeight) { npcsRace.baseHeight = npcsSubRace.subBaseHeight; }
-      if(npcsSubRace.subBaseWeight) { npcsRace.baseWeight = npcsSubRace.subBaseWeight; }
-      if(npcsSubRace.subHeightModifier) { npcsRace.heightModifier = npcsSubRace.subHeightModifier }
-      if(npcsSubRace.subWeightModifier) { npcsRace.weightModifier = npcsSubRace.subWeightModifier; }
-      if(npcsSubRace.subPredisposedLaw) { npcsRace.predisposedLaw = npcsSubRace.subPredisposedLaw; }
-      if(npcsSubRace.subPredisposedMoral) { npcsRace.predisposedMoral = npcsSubRace.subPredisposedMoral; }
-    }
-    npcsRace.subRaces = undefined;
-    return npcsRace;
+    //Use the chosen ID to return the corresponding race
+    return allRaces.find(race => race.id === chosenRaceId)!;
   }
 
   selectNpcGender(preSelectedGender?: string): string {
@@ -197,7 +194,10 @@ export class AppComponent {
     if(age >= race.ageAdolescent && age < race.ageAdulthood) { return 'Adolescent'; }
     if(age >= race.ageAdulthood && age < (race.ageLifespan * 0.4)) { return 'Adult'; }
     if(age >= (race.ageLifespan * 0.4) && age < (race.ageLifespan * 0.6)) { return 'Middle-aged'; }
-    return 'Elderly';
+    if(age >= (race.ageLifespan * 0.6) && age <= (race.ageLifespan)) { return 'Elderly'; }
+    if(age > race.ageLifespan) { return 'Unnaturally long-lived'; }
+    else { return 'Indeterminate'; }
+    
   }
 
   buildNameMatrix(race: string, gender: string): string[][] {
@@ -324,7 +324,33 @@ export class AppComponent {
     npc.alignment = this.selectNpcAlignment(npc.race, npc.traits);
     this.activeNpc = npc;
   }
+
+  //enableEditing(): void { this.npcEditingEnabled = true; }
+
+  //disableEditing(): void { this.npcEditingEnabled = false; }
+
+  //discardChanges(): void { this.npcEditingEnabled = false; }
+
+  enableDisableEditing(): void { this.npcEditingEnabled = !(this.npcEditingEnabled); }
+
+  saveChanges(changes: FormGroup): void {
+    this.activeNpc.name = changes.value.npcName;
+    this.activeNpc.race = this.selectNpcRace(changes.value.npcRace);
+    this.activeNpc.alignment = changes.value.npcAlignment;
+    this.activeNpc.sex = changes.value.npcSex;
+    this.activeNpc.age = changes.value.npcAge;
+    this.activeNpc.ageGroup = this.selectNpcAgeGroup(this.activeNpc.race, changes.value.npcAge);
+    this.activeNpc.height = changes.value.npcHeight;
+    this.activeNpc.weight = changes.value.npcWeight;
+    this.activeNpc.traits[0] = changes.value.npcTraitA;
+    this.activeNpc.traits[1] = changes.value.npcTraitB;
+    this.activeNpc.traits[2] = changes.value.npcTraitC;
+    this.npcEditingEnabled = false;
+  }
+
 }
+
+
 
 enum MoralAxis {
   G = 1,  //Good
@@ -335,16 +361,4 @@ enum LawAxis {
   L = 1,  //Lawful
   N = 0,  //Neutral
   C = -1  //Chaotic
-}
-
-enum Alignment {
-  LG = LawAxis.L + MoralAxis.G,
-  NG = LawAxis.N + MoralAxis.G,
-  CG = LawAxis.C + MoralAxis.G,
-  LN = LawAxis.L + MoralAxis.N,
-  N = LawAxis.N + MoralAxis.N,
-  CN = LawAxis.C + MoralAxis.N,
-  LE = LawAxis.L + MoralAxis.E,
-  NE = LawAxis.N + MoralAxis.E,
-  CE = LawAxis.C + MoralAxis.E
 }

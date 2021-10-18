@@ -1,14 +1,51 @@
+mat-card-header {
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.subtitle {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.subtitleForm {
+    width: 40%;
+    flex: 0 0 40%;
+}
+
+
 table {
     text-align: center;
+    width: 100%;
 }
 
 td {
     vertical-align: top;
+    white-space: normal;
+    text-overflow: wrap;
+    word-wrap: break-word;
+    overflow-x: hidden;
 }
 
-mat-grid-list {
-    min-height: 180px;
+.descColumn {
+    width: 25%;
+    flex: 0 0 25%;
 }
 
-h4 { text-align: center; }
-p { text-align: center; }
+.traitColumn {
+    width: 33%;
+    flex: 0 0 33%;
+}
+
+mat-card-footer {
+    padding: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+form, input, mat-select {
+    width: 100%;
+}

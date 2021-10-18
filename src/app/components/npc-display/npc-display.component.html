@@ -1,47 +1,147 @@
-<div>
-    <mat-card>
+<div fxLayout="column" fxLayoutAlign="space-evenly stretch" style="min-width:720px;">
+    <mat-card style="width:720px;">
         <!-- Header contains name, race and alignment -->
         <mat-card-header>
-            <mat-card-title>
-                {{displayedNpc.name}}
-            </mat-card-title>
-            <mat-card-subtitle>
+            <!-- Static -->
+            <mat-card-title *ngIf="!enableEditing">{{displayedNpc.name}}</mat-card-title>
+            <mat-card-subtitle  class="subtitle" *ngIf="!enableEditing">
                 <i>{{displayedNpc.race.name}}, {{displayedNpc.alignment}}</i>
+            </mat-card-subtitle>
+            <!-- Editing -->
+            <mat-card-title *ngIf="enableEditing">
+                <form>
+                    <mat-form-field appearance="standard">
+                        <mat-label style="font-size:14px;">Name</mat-label>
+                        <input matInput [formControl]="nameControl">
+                    </mat-form-field>
+                </form>
+            </mat-card-title>
+            <mat-card-subtitle class="subtitle" *ngIf="enableEditing">
+                <mat-form-field class="subtitleForm">
+                    <mat-select [formControl]="raceControl" name="npcRace">
+                        <mat-option *ngFor="let race of raceSelection" [value]="race.id">
+                            {{race.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="subtitleForm">
+                    <mat-select [formControl]="alignmentControl" name="npcAlignment">
+                        <mat-option *ngFor="let alignment of alignmentSelection" [value]="alignment">
+                            {{alignment}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </mat-card-subtitle>
         </mat-card-header>
 
-        <mat-card-content 
-            fxLayout="column" 
-            fxLayoutAlign="space-around stretch"
-            fxLayoutGap="16px">
-            <!-- Description -->
-            <table>
-                <tr>
-                    <th colspan="100%">Description:</th>
-                </tr>
-                <tr>
-                    <td style="width:25%">Sex: {{displayedNpc.sex}}</td>
-                    <td style="width:25%">Age: {{displayedNpc.age}} ({{displayedNpc.ageGroup}})</td>
-                    <td style="width:25%">Height: {{this.readableHeight(displayedNpc.height)}}</td>
-                    <td style="width:25%">Weight: {{readableWeight(displayedNpc.weight)}}</td>
-                </tr>
-            </table>
-            <!-- Personality -->
-            <table>
-                <tr>
-                    <th colspan="100%">Personality:</th>
-                </tr>
-                <tr>
-                    <td *ngFor="let trait of displayedNpc.traits" style="width:33%">
-                        {{trait.name}}
-                    </td>
-                </tr>
-                <tr>
-                    <td *ngFor="let trait of displayedNpc.traits" style="width:33%">
-                        {{trait.description}}
-                    </td>
-                </tr>
-            </table>
-        </mat-card-content>
+        <mat-card-content>
+        <!-- Description -->
+        <table>
+            <tr>
+                <th colspan="100%">Description:</th>
+            </tr>
+            <!-- Static -->
+            <tr *ngIf="!enableEditing">
+                <td class="descColumn">Sex: {{displayedNpc.sex}}</td>
+                <td class="descColumn">Age: {{displayedNpc.age}} ({{displayedNpc.ageGroup}})</td>
+                <td class="descColumn">Height: {{readableHeight(displayedNpc.height)}}</td>
+                <td class="descColumn">Weight: {{readableWeight(displayedNpc.weight)}}</td>
+            </tr>
+            <!-- Editing -->
+            <tr *ngIf="enableEditing">
+                <!-- Sex -->
+                <td class="descColumn">
+                    <mat-form-field appearance="standard">
+                        <mat-select [formControl]="sexControl" name="npcSex">
+                            <mat-option *ngFor="let sex of sexSelection" [value]=sex>
+                                {{sex}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <!-- Age -->
+                <td class="descColumn">
+                    <mat-form-field appearance="standard">
+                        <input matInput type="number" [formControl]="ageControl">
+                    </mat-form-field>
+                </td>
+                <!-- Height -->
+                <td class="descColumn"> 
+                    <mat-form-field appearance="standard">
+                        <input matInput type="number" [formControl]="heightControl">
+                        <mat-hint>Enter a new height in inches.</mat-hint>
+                    </mat-form-field>
+                </td>
+                <!-- Weight -->
+                <td class="descColumn">
+                    <mat-form-field appearance="standard">
+                        <input matInput type="number" [formControl]="weightControl">
+                        <mat-hint>Enter a new weight in pounds.</mat-hint>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+        <!-- Personality -->
+        <table>
+            <tr>
+                <th colspan="100%">Personality:</th>
+            </tr>
+            <!-- Static -->
+            <tr *ngIf="!enableEditing">
+                <td class="traitColumn">{{displayedNpc.traits[0].name}}</td>
+                <td class="traitColumn">{{displayedNpc.traits[1].name}}</td>
+                <td class="traitColumn">{{displayedNpc.traits[2].name}}</td>
+            </tr>
+            <!-- Editing -->
+            <tr *ngIf="enableEditing">
+                <td class="traitColumn">
+                    <mat-form-field appearance="standard">
+                        <mat-select [formControl]="firstTraitControl" name="npcTraitA">
+                            <mat-option *ngFor="let trait of traitSelection" [value]="trait" [disabled]="unselectableTrait(trait.name, 1)">
+                                {{trait.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td class="traitColumn">
+                    <mat-form-field appearance="standard">
+                        <mat-select [formControl]="secondTraitControl" name="npcTraitB">
+                            <mat-option *ngFor="let trait of traitSelection" [value]="trait" [disabled]="unselectableTrait(trait.name, 2)">
+                                {{trait.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td class="traitColumn">
+                    <mat-form-field appearance="standard">
+                        <mat-select [formControl]="thirdTraitControl" name="npcTraitC">
+                            <mat-option *ngFor="let trait of traitSelection" [value]="trait"[disabled]="unselectableTrait(trait.name, 3)">
+                                {{trait.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <!-- Static -->
+            <tr *ngIf="!enableEditing">
+                <td class="traitColumn" style="white-space:normal;">{{displayedNpc.traits[0].description}}</td>
+                <td class="traitColumn" style="white-space:normal;">{{displayedNpc.traits[1].description}}</td>
+                <td class="traitColumn" style="white-space:normal;">{{displayedNpc.traits[2].description}}</td>
+            </tr>
+            <!-- Editing -->
+            <tr *ngIf="enableEditing">
+                <td class="traitColumn" style="white-space:normal;">{{firstTraitControl.value.description}}</td>
+                <td class="traitColumn" style="white-space:normal;">{{secondTraitControl.value.description}}</td>
+                <td class="traitColumn" style="white-space:normal;">{{thirdTraitControl.value.description}}</td>
+            </tr>
+        </table>
+    </mat-card-content>
+
+        <mat-card-footer>
+            <button *ngIf="!enableEditing" mat-raised-button color="primary" (click)="enableChangesEmitter()">Edit NPC</button>
+            <button *ngIf="enableEditing" mat-raised-button color="warn" (click)="discardChangesEmitter()">Discard Changes</button>
+            <button *ngIf="enableEditing" mat-raised-button color="accent" (click)="saveChangesEmitter()">Save Changes</button>
+        </mat-card-footer>
     </mat-card>
+    
 </div>
